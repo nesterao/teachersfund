@@ -5,8 +5,8 @@ import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
 import 'package:teachersfund/shared/constants.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class PinPage extends StatelessWidget {
+  const PinPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,42 +38,34 @@ class SignUpPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'Welcome,',
+                              'PIN Authentication,',
                               style: themes.textTheme.headlineLarge,
                             ),
                             Text(
-                              'Sign up to begin.',
+                              'Enter your PIN.',
                               style: themes.textTheme.headlineMedium,
                             ),
                             verticalSpace(0.02),
                             TextInputField(
-                              labelText: 'Staff ID',
-                              onTap: () {},
-                            ),
-                            verticalSpace(0.02),
-                            TextInputField(
-                              labelText: 'Phone Number',
-                              onTap: () {},
-                            ),
-                            verticalSpace(0.02),
-                            TextInputField(
-                              labelText: 'Email',
+                              labelText: 'PIN Number',
                               onTap: () {},
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
                               onPressed: () {},
-                              child: Text('Sign Up'.toUpperCase()),
+                              child: Text('Login'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(
-                              'Already have an account?',
+                              'Don\'t have an account?',
                               style: themes.textTheme.displayMedium,
                               textAlign: TextAlign.center,
                             ),
                             TextButton(
-                              onPressed: () => Get.toNamed(AppRoutes.LOGIN),
-                              child: Text('Login'.toUpperCase()),
+                              onPressed: () => Get.offAndToNamed(
+                                AppRoutes.SIGNUP,
+                              ),
+                              child: Text('Sign Up'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(

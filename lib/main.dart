@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:teachersfund/pages/signup_page.dart';
 import 'package:teachersfund/shared/config.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -16,6 +16,7 @@ void main() {
   SystemChannels.textInput.invokeMethod('TextInput.hide');
 
   // await initServices();
+  // debugRepaintRainbowEnabled = true;
   runApp(const MyApp());
 }
 
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       theme: Themes.lightTheme,
       themeMode: ThemeMode.system,
       initialRoute: AppRoutes.INIT,
-      getPages: routes,
+      getPages: pages,
       home: const SignUpPage(),
       // home: const UIBody(
       //   child: LoadingScreen(),

@@ -2,7 +2,7 @@
     package="com.teacherfund.org.teachersfund">
    <application
         android:label="Teachers Fund Mobile"
-        android:name="${Teachers Fund Mobile}"
+        android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

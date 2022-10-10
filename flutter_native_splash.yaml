@@ -2,4 +2,4 @@ flutter_native_splash:
   image: assets/images/tf_logo.png
 #  color: "3182CE"
   background_image: "assets/images/splash_background.png"
-#  android_disble_fullscreen: true
+  android_disble_fullscreen: true

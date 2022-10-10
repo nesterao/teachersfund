@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/pages/home_page.dart';
 import 'package:teachersfund/pages/login_page.dart';
 import 'package:teachersfund/pages/signup_page.dart';
@@ -28,7 +29,7 @@ class AppRoutes {
   static const String HOME = '/HomePage';
 }
 
-List<GetPage<dynamic>> routes = <GetPage<dynamic>>[
+List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
   GetPage<dynamic>(name: '/', page: () => const SignUpPage()),
   GetPage(
     name: AppRoutes.LOGIN,
@@ -58,8 +59,9 @@ class Themes {
   static final ThemeData lightTheme = ThemeData(
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.light,
-    primaryColor: kLightTertiaryColor,
-    scaffoldBackgroundColor: kContentColorLightTheme,
+    primaryColor: kColorLightPrimary,
+    scaffoldBackgroundColor: kColorLightTheme,
+    fontFamily: 'Roboto',
     // bottomAppBarColor: kLightPrimaryColor,
     // dividerColor: kAccentColor,
     // appBarTheme: AppBarTheme(
@@ -91,34 +93,34 @@ class Themes {
     //   ),
     // ),
     cardTheme: const CardTheme(
-      color: kLightTertiaryColor,
+      // color: kColorLightTertiary,
       margin: EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
         // side: BorderSide(color: kLightPrimaryColor, width: 1),
       ),
     ),
-    // elevatedButtonTheme: ElevatedButtonThemeData(
-    //   style: ButtonStyle(
-    //     foregroundColor: MaterialStateProperty.all<Color>(kAccentColor),
-    //     backgroundColor: MaterialStateProperty.all<Color>(kLightPrimaryColor),
-    //     textStyle: MaterialStateProperty.all<TextStyle>(
-    //       TextStyle(
-    //         fontFamily: 'RobotoCondensed',
-    //         letterSpacing: Get.width * 0.002,
-    //         fontSize: Get.width * 0.04,
-    //       ),
-    //     ),
-    //     shape: MaterialStateProperty.all<OutlinedBorder>(
-    //       const RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.all(Radius.circular(4)),
-    //       ),
-    //     ),
-    //     padding: MaterialStateProperty.all(
-    //       const EdgeInsets.symmetric(vertical: 14),
-    //     ),
-    //   ),
-    // ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        // foregroundColor: MaterialStateProperty.all<Color>(kColorLightTertiary),
+        // backgroundColor: MaterialStateProperty.all<Color>(kColorLightPrimary),
+        // textStyle: MaterialStateProperty.all<TextStyle>(
+        //   TextStyle(
+        //     fontFamily: 'RobotoCondensed',
+        //     letterSpacing: Get.width * 0.002,
+        //     fontSize: Get.width * 0.04,
+        //   ),
+        // ),
+        shape: MaterialStateProperty.all<OutlinedBorder>(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+        ),
+        padding: MaterialStateProperty.all(
+          EdgeInsets.symmetric(vertical: getWidth(0.04)),
+        ),
+      ),
+    ),
     // outlinedButtonTheme: OutlinedButtonThemeData(
     //   style: ButtonStyle(
     //     foregroundColor: MaterialStateProperty.all<Color>(kLightPrimaryColor),
@@ -142,73 +144,77 @@ class Themes {
     //         MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 14)),
     //   ),
     // ),
-    // textButtonTheme: TextButtonThemeData(
-    //   style: ButtonStyle(
-    //     elevation: MaterialStateProperty.all<double>(0),
-    //     foregroundColor: MaterialStateProperty.all<Color>(kLightPrimaryColor),
-    //     textStyle: MaterialStateProperty.all<TextStyle>(
-    //       TextStyle(
-    //         fontFamily: 'RobotoCondensed',
-    //         fontSize: Get.width * 0.04,
-    //         decoration: TextDecoration.underline,
-    //       ),
-    //     ),
-    //     shape: MaterialStateProperty.all<OutlinedBorder>(
-    //       const RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.all(Radius.circular(4)),
-    //       ),
-    //     ),
-    //     // side: MaterialStateProperty.all(
-    //     //   BorderSide(color: kAccentColor, width: 1.4),
-    //     // ),
-    //     // padding: MaterialStateProperty.all(EdgeInsets.all(14)),
-    //   ),
-    // ),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all<double>(0),
+        // foregroundColor: MaterialStateProperty.all<Color>(kColorLightPrimary),
+        // textStyle: MaterialStateProperty.all<TextStyle>(
+        //   TextStyle(
+        //     fontFamily: 'RobotoCondensed',
+        //     fontSize: Get.width * 0.04,
+        //     decoration: TextDecoration.underline,
+        //   ),
+        // ),
+        shape: MaterialStateProperty.all<OutlinedBorder>(
+          const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+          ),
+        ),
+        // side: MaterialStateProperty.all(
+        //   BorderSide(color: kAccentColor, width: 1.4),
+        // ),
+        padding: MaterialStateProperty.all(
+          EdgeInsets.symmetric(vertical: getWidth(0.04)),
+        ),
+      ),
+    ),
     // textSelectionTheme: TextSelectionThemeData(
     //   cursorColor: kAccentColor,
     //   selectionColor: kLightSecondaryColor.withOpacity(0.4),
     //   selectionHandleColor: kAccentColor,
     // ),
-    // inputDecorationTheme: InputDecorationTheme(
-    //   filled: true,
-    //   fillColor: kLightTertiaryColor,
-    //   iconColor: kLightPrimaryColor,
-    //   // alignLabelWithHint: true,
-    //   suffixStyle: TextStyle(
-    //     fontFamily: 'Roboto',
-    //     fontSize: Get.width * 0.044,
-    //     letterSpacing: Get.width * 0.003,
-    //     // color: kLightPrimaryColor,
-    //   ),
-    //   floatingLabelStyle: TextStyle(
-    //     letterSpacing: Get.width * 0.002,
-    //     fontSize: Get.width * 0.024,
-    //   ),
-    //   enabledBorder: const UnderlineInputBorder(
-    //     borderSide: BorderSide(
-    //       color: kLightPrimaryColor,
-    //       width: 2,
-    //     ),
-    //   ),
-    //   disabledBorder: const UnderlineInputBorder(
-    //     borderSide: BorderSide(
-    //       color: Colors.grey,
-    //       width: 2,
-    //     ),
-    //   ),
-    //   focusedBorder: const UnderlineInputBorder(
-    //     borderSide: BorderSide(
-    //       color: kAccentColor,
-    //       width: 2,
-    //     ),
-    //   ),
-    //   errorBorder: const UnderlineInputBorder(
-    //     borderSide: BorderSide(
-    //       color: kErrorColor,
-    //       width: 2,
-    //     ),
-    //   ),
-    // ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: kColorLightTertiary,
+      iconColor: kAccentColor,
+      contentPadding: EdgeInsets.zero,
+      // suffixStyle: TextStyle(
+      //   fontFamily: 'Roboto',
+      //   fontSize: Get.width * 0.044,
+      //   letterSpacing: Get.width * 0.003,
+      //   // color: kLightPrimaryColor,
+      // ),
+      labelStyle: TextStyle(fontSize: getWidth(0.044)),
+      floatingLabelStyle: TextStyle(fontSize: getWidth(0.04)),
+      // floatingLabelStyle: TextStyle(
+      //   letterSpacing: Get.width * 0.002,
+      //   fontSize: Get.width * 0.024,
+      // ),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: kColorLightSecondary,
+          width: 2,
+        ),
+      ),
+      disabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.grey,
+          width: 2,
+        ),
+      ),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: kColorLightSecondary,
+          width: 2,
+        ),
+      ),
+      errorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: kErrorColor,
+          width: 2,
+        ),
+      ),
+    ),
     // iconTheme: IconThemeData(
     //   color: kLightSecondaryColor,
     //   size: Get.width * 0.06,
@@ -222,61 +228,77 @@ class Themes {
       displayLarge: TextStyle(
         fontFamily: 'RobotoCondensed',
         fontSize: Get.width * 0.044,
-        color: kLightTertiaryColor,
+        color: kColorLightTertiary,
       ),
       displayMedium: TextStyle(
-        fontFamily: 'RobotoCondensed',
-        fontSize: Get.width * 0.05,
-        color: kLightPrimaryColor,
+        fontFamily: 'Roboto',
+        fontSize: getWidth(0.03),
+        color: kColorTextPrimary,
       ),
       displaySmall: TextStyle(
         fontFamily: 'Roboto',
-        fontSize: Get.width * 0.04,
-        color: kLightTertiaryColor,
+        fontSize: Get.width * 0.024,
+        color: kColorLightTertiary,
+      ),
+      headlineLarge: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: getWidth(0.04),
+        color: kColorTextPrimary,
+        fontWeight: FontWeight.bold,
       ),
       headlineMedium: TextStyle(
         fontFamily: 'RobotoCondensed',
+        fontSize: getWidth(0.032),
+        color: kColorTextPrimary,
+      ),
+      headlineSmall: TextStyle(
+        fontFamily: 'RobotoCondensed',
         fontSize: Get.width * 0.06,
-        color: kLightPrimaryColor,
+        color: kColorLightPrimary,
         fontWeight: FontWeight.bold,
       ),
       bodyLarge: TextStyle(
         fontFamily: 'Roboto',
         fontSize: Get.width * 0.04,
-        color: kLightPrimaryColor,
+        color: kColorLightPrimary,
       ),
       bodyMedium: TextStyle(
         fontFamily: 'RobotoCondensed',
         fontSize: Get.width * 0.04,
-        color: kLightPrimaryColor,
+        color: kColorLightPrimary,
       ),
       bodySmall: TextStyle(
         fontFamily: 'Roboto',
-        fontSize: Get.width * 0.032,
-        color: kLightTertiaryColor,
+        fontSize: Get.width * 0.02,
+        color: kColorLightTertiary,
       ),
       labelLarge: TextStyle(
         fontFamily: 'Roboto',
         fontSize: Get.width * 0.044,
         letterSpacing: Get.width * 0.002,
-        color: kLightPrimaryColor,
+        color: kColorLightPrimary,
       ),
-      titleMedium: TextStyle(
+      labelMedium: TextStyle(
         fontFamily: 'Roboto',
-        fontSize: Get.width * 0.032,
-        color: kLightPrimaryColor,
-      ),
-      titleSmall: TextStyle(
-        fontFamily: 'Roboto',
-        fontSize: Get.width * 0.032,
-        color: kLightPrimaryColor,
-        decoration: TextDecoration.underline,
+        fontSize: getWidth(0.052),
+        color: kColorTextPrimary,
       ),
       labelSmall: TextStyle(
         fontFamily: 'Roboto',
         fontSize: Get.width * 0.044,
         letterSpacing: Get.width * 0.003,
-        color: kLightPrimaryColor,
+        color: kColorLightPrimary,
+      ),
+      titleMedium: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: Get.width * 0.032,
+        color: kColorLightPrimary,
+      ),
+      titleSmall: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: Get.width * 0.032,
+        color: kColorLightPrimary,
+        decoration: TextDecoration.underline,
       ),
     ),
   );
