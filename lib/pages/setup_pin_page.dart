@@ -4,8 +4,8 @@ import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
 
-class PINPage extends StatelessWidget {
-  const PINPage({Key? key}) : super(key: key);
+class SetupPINPage extends StatelessWidget {
+  const SetupPINPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +63,28 @@ class PINPage extends StatelessWidget {
                               ),
                             ),
                             verticalSpace(0.04),
-                            ElevatedButton(
-                              onPressed: () => Get.toNamed(AppRoutes.OTP),
-                              child: Text('Authenticate'.toUpperCase()),
+                            Text(
+                              'Confirm your new PIN.',
+                              style: themes.textTheme.headlineMedium,
                             ),
                             verticalSpace(0.04),
-                            Text(
-                              'Forgot your PIN?',
-                              style: themes.textTheme.displayMedium,
-                              textAlign: TextAlign.center,
+                            RepaintBoundary(
+                              child: PinInput(
+                                // autoFocus: !controller.checkSource(),
+                                length: 4,
+                                obscureText: true,
+                                // focusNode: controller.pinInput2FN,
+                                // controller: controller.pinPut2TEC,
+                                // onCompleted: (_) => controller.submit(),
+                                onCompleted: (_) {},
+                                // validator: Validators.pinValidator,
+                              ),
                             ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text('Reset PIN.'.toUpperCase()),
+                            verticalSpace(0.04),
+                            ElevatedButton(
+                              onPressed: () =>
+                                  Get.toNamed(AppRoutes.SECURITYQUESTIONS),
+                              child: Text('Authenticate'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(

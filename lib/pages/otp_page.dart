@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
-import 'package:teachersfund/shared/constants.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class OTPPage extends StatelessWidget {
+  const OTPPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +13,12 @@ class SignUpPage extends StatelessWidget {
 
     return UIBody(
       child: Scaffold(
+        appBar: appBar(showBackButton: true),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: getWidth(0.08)),
-              height: getDisplayHeight(),
+              height: getDisplayHeight(appBar: true),
               width: getDisplayWidth(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -38,49 +38,53 @@ class SignUpPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'Welcome,',
+                              'OTP Verification,',
                               style: themes.textTheme.headlineLarge,
                             ),
                             Text(
-                              'Sign up to begin.',
+                              'Enter your OTP code.',
                               style: themes.textTheme.headlineMedium,
                             ),
-                            verticalSpace(0.02),
-                            TextInputField(
-                              labelText: 'Staff ID',
-                              onTap: () {},
-                            ),
-                            verticalSpace(0.02),
-                            TextInputField(
-                              labelText: 'Phone Number',
-                              onTap: () {},
-                            ),
-                            verticalSpace(0.02),
-                            TextInputField(
-                              labelText: 'Email',
-                              onTap: () {},
+                            verticalSpace(0.04),
+                            PinInput(
+                              length: 5,
+                              autoFocus: true,
+                              obscureText: false,
+                              // enablePinAutofill: controller.isLoading.value,
+                              // focusNode: controller.otpVerificationFN,
+                              // controller: controller.otpVerificationTEC,
+                              // validator: Validators.otpValidator,
+                              onCompleted: (_) {
+                                // controller.submit();
+                                return;
+                              },
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () {},
-                              child: Text('Sign Up'.toUpperCase()),
+                              onPressed: () {
+                                print(Get.arguments['isSignUp']);
+                                Get.arguments['isSignUp'];
+
+                                Get.arguments['isSignUp']
+                                    ? Get.toNamed(AppRoutes.SIGNUP)
+                                    : Get.toNamed(AppRoutes.HOME);
+                              },
+                              child: Text('Verify'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(
-                              'Already have an account?',
+                              'Resend OTP Code',
                               style: themes.textTheme.displayMedium,
                               textAlign: TextAlign.center,
                             ),
                             TextButton(
-                              onPressed: () => Get.toNamed(AppRoutes.LOGIN),
-                              child: Text('Login'.toUpperCase()),
+                              onPressed: () {},
+                              child: const Text('Send Code Via Email'),
                             ),
                             verticalSpace(0.04),
                             Text(
                               '©Teachers’ Fund of GNAT - 2022.',
-                              style: themes.textTheme.bodySmall?.copyWith(
-                                color: kColorTextPrimary,
-                              ),
+                              style: themes.textTheme.bodySmall,
                               textAlign: TextAlign.center,
                             ),
                           ],

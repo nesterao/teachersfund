@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:teachersfund/pages/signup_page.dart';
+import 'package:teachersfund/pages/welcome_page.dart';
 import 'package:teachersfund/shared/config.dart';
 
 void main() async {
@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       themeMode: ThemeMode.system,
       initialRoute: AppRoutes.INIT,
       getPages: pages,
-      home: const SignUpPage(),
+      home: const WelcomePage(),
       // home: const UIBody(
       //   child: LoadingScreen(),
       // ),

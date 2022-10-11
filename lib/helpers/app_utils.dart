@@ -13,9 +13,9 @@ Widget horizontalSpace(double space) {
   );
 }
 
-double getDisplayHeight({PreferredSizeWidget? appBar}) => appBar == null
+double getDisplayHeight({bool? appBar}) => appBar == null
     ? Get.height - Get.mediaQuery.padding.top
-    : Get.height - Get.mediaQuery.padding.top - appBar.preferredSize.height;
+    : Get.height - Get.mediaQuery.padding.top - AppBar().preferredSize.height;
 
 double getDisplayWidth() => Get.width;
 

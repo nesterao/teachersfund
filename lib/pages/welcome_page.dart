@@ -4,8 +4,8 @@ import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
 
-class PINPage extends StatelessWidget {
-  const PINPage({Key? key}) : super(key: key);
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,11 @@ class PINPage extends StatelessWidget {
 
     return UIBody(
       child: Scaffold(
-        appBar: appBar(showBackButton: true),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: getWidth(0.08)),
-              height: getDisplayHeight(appBar: true),
+              height: getDisplayHeight(),
               width: getDisplayWidth(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -38,44 +37,45 @@ class PINPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'PIN Authentication,',
+                              'Welcome,',
                               style: themes.textTheme.headlineLarge,
                             ),
                             Text(
-                              'Enter your PIN.',
+                              'Sign up to begin.',
                               style: themes.textTheme.headlineMedium,
                             ),
                             verticalSpace(0.04),
-                            // TextInputField(
-                            //   labelText: 'PIN Number',
-                            //   onTap: () {},
-                            // ),
-                            RepaintBoundary(
-                              child: PinInput(
-                                // autoFocus: !controller.checkSource(),
-                                length: 4,
-                                obscureText: true,
-                                // focusNode: controller.pinInput2FN,
-                                // controller: controller.pinPut2TEC,
-                                // onCompleted: (_) => controller.submit(),
-                                onCompleted: (_) {},
-                                // validator: Validators.pinValidator,
-                              ),
+                            TextInputField(
+                              labelText: 'Staff ID',
+                              onTap: () {},
+                            ),
+                            verticalSpace(0.02),
+                            TextInputField(
+                              labelText: 'Phone Number',
+                              onTap: () {},
+                            ),
+                            verticalSpace(0.02),
+                            TextInputField(
+                              labelText: 'Email',
+                              onTap: () {},
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () => Get.toNamed(AppRoutes.OTP),
-                              child: Text('Authenticate'.toUpperCase()),
+                              onPressed: () => Get.toNamed(AppRoutes.OTP,
+                                  arguments: {'isSignUp': true}),
+                              child: Text('Sign Up'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(
-                              'Forgot your PIN?',
+                              'Already have an account?',
                               style: themes.textTheme.displayMedium,
                               textAlign: TextAlign.center,
                             ),
                             TextButton(
-                              onPressed: () {},
-                              child: Text('Reset PIN.'.toUpperCase()),
+                              onPressed: () => Get.offAllNamed(
+                                AppRoutes.LOGIN,
+                              ),
+                              child: Text('Login'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(

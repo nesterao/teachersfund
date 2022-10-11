@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 
 import '../shared/constants.dart';
@@ -14,6 +17,24 @@ Widget logo() {
       'assets/images/tf_logo.png',
       fit: BoxFit.contain,
     ),
+  );
+}
+
+AppBar appBar({
+  bool showActions = false,
+  bool showBackButton = false,
+  VoidCallback? backOnTap,
+}) {
+  return AppBar(
+    backgroundColor: Colors.transparent,
+    shadowColor: Colors.transparent,
+    automaticallyImplyLeading: false,
+    leading: showBackButton
+        ? IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () => Get.back(),
+          )
+        : null,
   );
 }
 
@@ -81,7 +102,9 @@ class LoadingScreen extends StatelessWidget {
             verticalSpace(0.04),
             Text(
               '©Teachers’ Fund of GNAT - 2022.',
-              style: themes.textTheme.bodySmall,
+              style: themes.textTheme.bodySmall?.copyWith(
+                color: kColorLightTertiary,
+              ),
             ),
             verticalSpace(0.04),
           ],
@@ -155,6 +178,63 @@ class TextInputField extends StatelessWidget {
       style: themes.textTheme.labelMedium,
       decoration: InputDecoration(
         label: Text(labelText ?? 'Staff ID'),
+      ),
+    );
+  }
+}
+
+class PinInput extends StatelessWidget {
+  const PinInput({
+    Key? key,
+    this.length,
+    this.autoFocus = false,
+    this.obscureText = false,
+    this.enablePinAutofill = false,
+    this.focusNode,
+    this.controller,
+    this.onCompleted,
+    this.validator,
+  }) : super(key: key);
+
+  final int? length;
+  final bool autoFocus;
+  final bool obscureText;
+  final bool enablePinAutofill;
+  final FocusNode? focusNode;
+  final TextEditingController? controller;
+  final void Function(String e)? onCompleted;
+  final String? Function(String? e)? validator;
+
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData themes = Theme.of(context);
+    return RepaintBoundary(
+      child: PinCodeTextField(
+        appContext: context,
+        length: length!,
+        autoFocus: autoFocus,
+        focusNode: focusNode,
+        controller: controller,
+        obscureText: obscureText,
+        animationType: AnimationType.scale,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        keyboardType: TextInputType.number,
+        hapticFeedbackTypes: HapticFeedbackTypes.medium,
+        textInputAction: TextInputAction.send,
+        onCompleted: onCompleted,
+        onChanged: (_) {},
+        onSubmitted: onCompleted,
+        backgroundColor: Colors.transparent,
+        pastedTextStyle: themes.textTheme.headlineLarge,
+        pinTheme: const PinTheme.defaults(
+          activeColor: kColorLightSecondary,
+          inactiveColor: kAccentColor,
+          selectedColor: kColorLightPrimary,
+          borderWidth: 4,
+        ),
+        errorTextMargin: EdgeInsets.fromLTRB(Get.width * 0.25, 0, 0, 0),
+        validator: validator,
+        useExternalAutoFillGroup: true,
       ),
     );
   }

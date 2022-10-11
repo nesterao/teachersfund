@@ -3,7 +3,12 @@ import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/pages/home_page.dart';
 import 'package:teachersfund/pages/login_page.dart';
-import 'package:teachersfund/pages/signup_page.dart';
+import 'package:teachersfund/pages/otp_page.dart';
+import 'package:teachersfund/pages/pin_page.dart';
+import 'package:teachersfund/pages/security_questions.dart';
+import 'package:teachersfund/pages/setup_pin_page.dart';
+import 'package:teachersfund/pages/sign_up_page.dart';
+import 'package:teachersfund/pages/welcome_page.dart';
 
 import 'constants.dart';
 
@@ -24,30 +29,71 @@ bool isLoggedIn() {
 
 class AppRoutes {
   static const String INIT = '/';
-  static const String SIGNUP = '/SignUpPage';
+  static const String WELCOME = '/WelcomePage';
   static const String LOGIN = '/LoginPage';
+  static const String PIN = '/PINPage';
+  static const String OTP = '/OTPPage';
+  static const String SIGNUP = '/SignUpPage';
+  static const String SETUPPIN = '/SetupPINPage';
+  static const String SECURITYQUESTIONS = '/SecurityQuestions';
   static const String HOME = '/HomePage';
 }
 
 List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
-  GetPage<dynamic>(name: '/', page: () => const SignUpPage()),
+  GetPage<dynamic>(name: '/', page: () => const WelcomePage()),
+  GetPage(
+    name: AppRoutes.WELCOME,
+    page: () => const WelcomePage(),
+    transition: Transition.zoom,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
   GetPage(
     name: AppRoutes.LOGIN,
     page: () => const LoginPage(),
     transition: Transition.topLevel,
-    transitionDuration: const Duration(milliseconds: 300),
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.PIN,
+    page: () => const PINPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.OTP,
+    page: () => const OTPPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
     curve: Curves.easeInOut,
   ),
   GetPage(
     name: AppRoutes.SIGNUP,
     page: () => const SignUpPage(),
-    transition: Transition.topLevel,
-    transitionDuration: const Duration(milliseconds: 300),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.SETUPPIN,
+    page: () => const SetupPINPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.SECURITYQUESTIONS,
+    page: () => const SecurityQuestions(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
     curve: Curves.easeInOut,
   ),
   GetPage(
     name: AppRoutes.HOME,
-    page: () => isLoggedIn() ? const HomePage() : const LoginPage(),
+    // page: () => isLoggedIn() ? const HomePage() : const LoginPage(),
+    page: () => const HomePage(),
     transition: Transition.topLevel,
     transitionDuration: const Duration(milliseconds: 300),
     curve: Curves.easeInOut,
@@ -270,7 +316,7 @@ class Themes {
       bodySmall: TextStyle(
         fontFamily: 'Roboto',
         fontSize: Get.width * 0.02,
-        color: kColorLightTertiary,
+        color: kColorTextPrimary,
       ),
       labelLarge: TextStyle(
         fontFamily: 'Roboto',

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
-import 'package:teachersfund/shared/config.dart';
 
-class PINPage extends StatelessWidget {
-  const PINPage({Key? key}) : super(key: key);
+class SecurityQuestions extends StatelessWidget {
+  const SecurityQuestions({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,44 +36,42 @@ class PINPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              'PIN Authentication,',
+                              'Security Questions,',
                               style: themes.textTheme.headlineLarge,
                             ),
                             Text(
-                              'Enter your PIN.',
+                              'Answers are required to reset your PIN.',
                               style: themes.textTheme.headlineMedium,
                             ),
                             verticalSpace(0.04),
-                            // TextInputField(
-                            //   labelText: 'PIN Number',
-                            //   onTap: () {},
-                            // ),
-                            RepaintBoundary(
-                              child: PinInput(
-                                // autoFocus: !controller.checkSource(),
-                                length: 4,
-                                obscureText: true,
-                                // focusNode: controller.pinInput2FN,
-                                // controller: controller.pinPut2TEC,
-                                // onCompleted: (_) => controller.submit(),
-                                onCompleted: (_) {},
-                                // validator: Validators.pinValidator,
-                              ),
+                            TextInputField(
+                              labelText: 'Security Question 1',
+                              onTap: () {},
+                              enabled: false,
+                              enableInteractiveSelection: false,
+                            ),
+                            verticalSpace(0.02),
+                            TextInputField(
+                              labelText: 'Answer 1',
+                              onTap: () {},
+                              keyboardType: TextInputType.name,
+                            ),
+                            verticalSpace(0.02),
+                            TextInputField(
+                              labelText: 'Security Question 2',
+                              onTap: () {},
+                              enabled: false,
+                              enableInteractiveSelection: false,
+                            ),
+                            verticalSpace(0.02),
+                            TextInputField(
+                              labelText: 'Answer 2',
+                              onTap: () {},
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () => Get.toNamed(AppRoutes.OTP),
-                              child: Text('Authenticate'.toUpperCase()),
-                            ),
-                            verticalSpace(0.04),
-                            Text(
-                              'Forgot your PIN?',
-                              style: themes.textTheme.displayMedium,
-                              textAlign: TextAlign.center,
-                            ),
-                            TextButton(
                               onPressed: () {},
-                              child: Text('Reset PIN.'.toUpperCase()),
+                              child: Text('Next'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(

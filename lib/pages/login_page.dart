@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
-import 'package:teachersfund/shared/constants.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -45,14 +44,14 @@ class LoginPage extends StatelessWidget {
                               'Login to continue.',
                               style: themes.textTheme.headlineMedium,
                             ),
-                            verticalSpace(0.02),
+                            verticalSpace(0.04),
                             TextInputField(
                               labelText: 'Staff ID',
                               onTap: () {},
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => Get.toNamed(AppRoutes.PIN),
                               child: Text('Login'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
@@ -62,17 +61,15 @@ class LoginPage extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                             TextButton(
-                              onPressed: () => Get.offAndToNamed(
-                                AppRoutes.SIGNUP,
+                              onPressed: () => Get.offAllNamed(
+                                AppRoutes.WELCOME,
                               ),
                               child: Text('Sign Up'.toUpperCase()),
                             ),
                             verticalSpace(0.04),
                             Text(
                               '©Teachers’ Fund of GNAT - 2022.',
-                              style: themes.textTheme.bodySmall?.copyWith(
-                                color: kColorTextPrimary,
-                              ),
+                              style: themes.textTheme.bodySmall,
                               textAlign: TextAlign.center,
                             ),
                           ],
