@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:teachersfund/pages/welcome_page.dart';
+import 'package:teachersfund/helpers/app_widgets.dart';
 import 'package:teachersfund/shared/config.dart';
 
 void main() async {
@@ -15,13 +15,20 @@ void main() async {
   );
   SystemChannels.textInput.invokeMethod('TextInput.hide');
 
-  // await initServices();
+  await initServices();
   // debugRepaintRainbowEnabled = true;
   runApp(const MyApp());
 }
 
+Future<void> initServices() async {
+  Future.delayed(
+    const Duration(seconds: 4),
+    () => Get.offNamed(AppRoutes.WELCOME),
+  );
+}
+
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -49,10 +56,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       themeMode: ThemeMode.system,
       initialRoute: AppRoutes.INIT,
       getPages: pages,
-      home: const WelcomePage(),
-      // home: const UIBody(
-      //   child: LoadingScreen(),
-      // ),
+      // home: const WelcomePage(),
+      home: const UIBody(
+        child: LoadingScreen(),
+      ),
     );
   }
 }

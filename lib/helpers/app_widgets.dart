@@ -78,9 +78,7 @@ class UIBody extends StatelessWidget {
 }
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({
-    super.key,
-  });
+  const LoadingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -158,26 +156,28 @@ class TextInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themes = Theme.of(context);
 
-    return TextFormField(
-      enabled: enabled ?? true,
-      enableInteractiveSelection: enableInteractiveSelection ?? true,
-      textCapitalization: textCapitalization ?? TextCapitalization.words,
-      textAlign: textAlign ?? TextAlign.start,
-      readOnly: readOnly ?? false,
-      autofocus: autoFocus ?? false,
-      focusNode: focusNode,
-      obscureText: obscureText ?? false,
-      maxLength: maxLength,
-      controller: controller,
-      keyboardType: keyboardType,
-      validator: validator,
-      onEditingComplete: onEditingComplete,
-      inputFormatters: inputFormatter,
-      onTap: onTap,
-      textInputAction: textInputAction,
-      style: themes.textTheme.labelMedium,
-      decoration: InputDecoration(
-        label: Text(labelText ?? 'Staff ID'),
+    return RepaintBoundary(
+      child: TextFormField(
+        enabled: enabled ?? true,
+        enableInteractiveSelection: enableInteractiveSelection ?? true,
+        textCapitalization: textCapitalization ?? TextCapitalization.words,
+        textAlign: textAlign ?? TextAlign.start,
+        readOnly: readOnly ?? false,
+        autofocus: autoFocus ?? false,
+        focusNode: focusNode,
+        obscureText: obscureText ?? false,
+        maxLength: maxLength,
+        controller: controller,
+        keyboardType: keyboardType,
+        validator: validator,
+        onEditingComplete: onEditingComplete,
+        inputFormatters: inputFormatter,
+        onTap: onTap,
+        textInputAction: textInputAction,
+        style: themes.textTheme.labelMedium,
+        decoration: InputDecoration(
+          label: Text(labelText ?? 'Staff ID'),
+        ),
       ),
     );
   }
@@ -236,6 +236,99 @@ class PinInput extends StatelessWidget {
         validator: validator,
         useExternalAutoFillGroup: true,
       ),
+    );
+  }
+}
+
+class DropdownField extends StatelessWidget {
+  const DropdownField({
+    Key? key,
+    this.enabled,
+    this.autoFocus,
+    this.focusNode,
+    this.validator,
+    this.onTap,
+    this.onChanged,
+    this.items,
+    this.labelText,
+  }) : super(key: key);
+
+  final bool? enabled;
+  final bool? autoFocus;
+  final FocusNode? focusNode;
+  final String? Function(String? e)? validator;
+  final VoidCallback? onTap;
+  final Function(String? e)? onChanged;
+  final List<String?>? items;
+  final String? labelText;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonFormField<String>(
+      enableFeedback: enabled ?? true,
+      autofocus: autoFocus ?? false,
+      focusNode: focusNode,
+      validator: validator,
+      onTap: onTap,
+      onChanged: onChanged,
+      iconEnabledColor: kAccentColor,
+      iconSize: Get.width * 0.06,
+      elevation: 0,
+      isExpanded: true,
+      hint: Text(
+        items![0] ?? labelText ?? '',
+        style: const TextStyle(color: Colors.grey),
+      ),
+      items: items!.map<DropdownMenuItem<String>>((String? value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text('$value'),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      elevation: 6,
+      child: Column(children: [
+        const SizedBox(height: 100),
+        ListTile(
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/');
+          },
+          leading: const Icon(Icons.home),
+          title: const Text(
+            'Home',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/settings-screen');
+          },
+          leading: const Icon(Icons.settings),
+          title: const Text(
+            'Settings',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/contact-screen');
+          },
+          leading: const Icon(Icons.contact_mail),
+          title: const Text(
+            'Contact',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+      ]),
     );
   }
 }

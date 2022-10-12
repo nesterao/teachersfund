@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
+import 'package:teachersfund/pages/fund_page.dart';
+import 'package:teachersfund/pages/help_page.dart';
 import 'package:teachersfund/pages/home_page.dart';
+import 'package:teachersfund/pages/loan_page.dart';
 import 'package:teachersfund/pages/login_page.dart';
+import 'package:teachersfund/pages/main_page.dart';
 import 'package:teachersfund/pages/otp_page.dart';
 import 'package:teachersfund/pages/pin_page.dart';
 import 'package:teachersfund/pages/security_questions.dart';
@@ -36,7 +40,11 @@ class AppRoutes {
   static const String SIGNUP = '/SignUpPage';
   static const String SETUPPIN = '/SetupPINPage';
   static const String SECURITYQUESTIONS = '/SecurityQuestions';
+  static const String MAIN = '/MainPage';
   static const String HOME = '/HomePage';
+  static const String FUND = '/FundPage';
+  static const String LOAN = '/LoanPage';
+  static const String HELP = '/HelpPage';
 }
 
 List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
@@ -91,11 +99,38 @@ List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
     curve: Curves.easeInOut,
   ),
   GetPage(
+    name: AppRoutes.MAIN,
+    page: () => MainPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
     name: AppRoutes.HOME,
-    // page: () => isLoggedIn() ? const HomePage() : const LoginPage(),
     page: () => const HomePage(),
     transition: Transition.topLevel,
-    transitionDuration: const Duration(milliseconds: 300),
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.FUND,
+    page: () => const FundPage(),
+    transition: Transition.topLevel,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.LOAN,
+    page: () => const LoanPage(),
+    transition: Transition.topLevel,
+    transitionDuration: const Duration(milliseconds: 400),
+    curve: Curves.easeInOut,
+  ),
+  GetPage(
+    name: AppRoutes.HELP,
+    page: () => const HelpPage(),
+    transition: Transition.topLevel,
+    transitionDuration: const Duration(milliseconds: 400),
     curve: Curves.easeInOut,
   ),
 ];

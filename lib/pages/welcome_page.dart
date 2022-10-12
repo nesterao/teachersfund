@@ -61,8 +61,10 @@ class WelcomePage extends StatelessWidget {
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () => Get.toNamed(AppRoutes.OTP,
-                                  arguments: {'isSignUp': true}),
+                              onPressed: () => Get.toNamed(
+                                AppRoutes.OTP,
+                                arguments: {'otpRoute': AppRoutes.SIGNUP},
+                              ),
                               child: Text('Sign Up'.toUpperCase()),
                             ),
                             verticalSpace(0.04),

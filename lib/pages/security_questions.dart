@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
+import 'package:teachersfund/shared/config.dart';
 
 class SecurityQuestions extends StatelessWidget {
   const SecurityQuestions({Key? key}) : super(key: key);
@@ -44,11 +46,14 @@ class SecurityQuestions extends StatelessWidget {
                               style: themes.textTheme.headlineMedium,
                             ),
                             verticalSpace(0.04),
-                            TextInputField(
+                            DropdownField(
                               labelText: 'Security Question 1',
                               onTap: () {},
-                              enabled: false,
-                              enableInteractiveSelection: false,
+                              // enabled: false,
+                              items: const [
+                                'Security Question 1',
+                                'Security Question2'
+                              ],
                             ),
                             verticalSpace(0.02),
                             TextInputField(
@@ -57,11 +62,14 @@ class SecurityQuestions extends StatelessWidget {
                               keyboardType: TextInputType.name,
                             ),
                             verticalSpace(0.02),
-                            TextInputField(
+                            DropdownField(
                               labelText: 'Security Question 2',
                               onTap: () {},
-                              enabled: false,
-                              enableInteractiveSelection: false,
+                              // enabled: false,
+                              items: const [
+                                'Security Question 1',
+                                'Security Question2'
+                              ],
                             ),
                             verticalSpace(0.02),
                             TextInputField(
@@ -70,7 +78,7 @@ class SecurityQuestions extends StatelessWidget {
                             ),
                             verticalSpace(0.04),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => Get.offAllNamed(AppRoutes.MAIN),
                               child: Text('Next'.toUpperCase()),
                             ),
                             verticalSpace(0.04),

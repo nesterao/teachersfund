@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teachersfund/helpers/app_utils.dart';
 import 'package:teachersfund/helpers/app_widgets.dart';
-import 'package:teachersfund/shared/config.dart';
 
 class OTPPage extends StatelessWidget {
   const OTPPage({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class OTPPage extends StatelessWidget {
                             verticalSpace(0.04),
                             PinInput(
                               length: 5,
-                              autoFocus: true,
+                              // autoFocus: true,
                               obscureText: false,
                               // enablePinAutofill: controller.isLoading.value,
                               // focusNode: controller.otpVerificationFN,
@@ -62,12 +61,11 @@ class OTPPage extends StatelessWidget {
                             verticalSpace(0.04),
                             ElevatedButton(
                               onPressed: () {
-                                print(Get.arguments['isSignUp']);
-                                Get.arguments['isSignUp'];
-
-                                Get.arguments['isSignUp']
-                                    ? Get.toNamed(AppRoutes.SIGNUP)
-                                    : Get.toNamed(AppRoutes.HOME);
+                                // if (Get.arguments['isSignUp']) {
+                                Get.toNamed(Get.arguments['otpRoute']);
+                                // } else {
+                                //   Get.toNamed(AppRoutes.MAIN);
+                                // }
                               },
                               child: Text('Verify'.toUpperCase()),
                             ),
