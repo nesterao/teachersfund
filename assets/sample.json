@@ -1,0 +1,13 @@
+{
+ "success" : true,
+ "message" : "Received Data",
+ "data":
+  {
+   "staffID": "A2341",
+   "firstName": "John",
+   "surname": "Doe",
+   "phoneNumber": "0212345678",
+   "email": "username@email.com",
+   "token": ""
+  }
+}
